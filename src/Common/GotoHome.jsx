@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 const GotoHome = () => {
     return (
         <div>
-            <Link to ="/home">go to home</Link>     
+            <Link to ="/">go to home</Link>     
         </div>
     )
 }
