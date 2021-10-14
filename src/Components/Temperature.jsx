@@ -23,34 +23,34 @@ const Temperature = () => {
         if(celciusradioI){
             if(farenheitradio){
                 const F = (input *(9/5)) +32;
-                setOutput(F);
+                setOutput(F.toFixed(2));
                 
             }
             else if(kelvinradio){
                 const K = (input + 273.15) ;
-                setOutput(K);
+                setOutput(K.toFixed(2));
             }   
             else setError(true);
         }
         else if(farenheitradioI){
              if(celciusradio){
                 const C = (input - 32 )* 5/9;
-                setOutput(C);
+                setOutput(C.toFixed(2));
             }
             else if(kelvinradio){
                 const K = (input - 32) *(5/9) + 273.15 ;
-                setOutput(K);
+                setOutput(K.toFixed(2));
             }   
-            else setError(true);
+            else setError(true.toFixed(2));
         }
         else if (kelvinradioI){
             if(celciusradio){
                 const C = input - 273.15;
-                setOutput(C);
+                setOutput(C.toFixed(2));
             }
             else if(farenheitradio){
                 const K = (input - 273.15) *(9/5) + 32 ;
-                setOutput(K);
+                setOutput(K.toFixed(2));
             }   
             else setError(true);
 
@@ -59,19 +59,21 @@ const Temperature = () => {
         
     }
     const handleUnit=(e)=>{
+//  output id's
         const cid = "celcius"
         const fid = "farenheit"
         const kid = "kelvin"
+//  output id's
 
+//  input id's
         const celid = "cel"
         const faid = "faren"
         const kelid = "kel"
-        
+//  input id's
+
         // set input unit 
         if(e.target.id === faid){
             setFarenheitradioI(true);
-
-            console.log("click i f , ", farenheitradioI)
 
             setKelvinradioI(false);
             setCelciusradioI(false);
@@ -80,7 +82,6 @@ const Temperature = () => {
         else if(e.target.id === celid){
             setCelciusradioI(true);
             
-            console.log("click i c , ", celciusradioI)
             setFarenheitradioI(false);
             setKelvinradioI(false);
 
@@ -88,7 +89,6 @@ const Temperature = () => {
         else if(e.target.id === kelid){
             setKelvinradioI(true);
 
-            console.log("click i  k , ", kelvinradioI)
             setCelciusradioI(false);
             setFarenheitradioI(false);
 
