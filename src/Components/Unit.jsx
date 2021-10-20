@@ -1,8 +1,9 @@
 import React,{useState} from 'react'
 import GotoHome from "../Common/GotoHome";
+import "../Style/Unit.css";
 const Unit = () => {
-    const[input,setInput] = useState(0.0);
-    const[output,setOutput] = useState(0.0);
+    const[input,setInput] = useState("");
+    const[output,setOutput] = useState("");
 
     const[meterIradio,setMeterIradio]=useState(false);
     const[centiIradio,setCentiIradio]=useState(false);
@@ -19,8 +20,8 @@ const Unit = () => {
     const[inch,setInch]=useState(false);
 
     const [error,setError]= useState(false);
-    
-    const handleChange=(e)=>{
+
+    const handleChange=(e)=>{        
         setInput(parseFloat(e.target.value));
     }
 
@@ -36,7 +37,7 @@ const Unit = () => {
         if(e.target.id === m){
 
             setMeterIradio(true);
-
+            
             setCentiIradio(false);
             setKilometerIradio(false);
             setDecimeterIradio(false);
@@ -323,16 +324,18 @@ const Unit = () => {
     }
     
     return (
-        <div>
-            <GotoHome />
+        <>
+         <GotoHome />
+        <div className="component-wrapper">
             <div className="c-header"><h4>Unit convertor</h4></div>
-           
-           
+            <div className="math-wrapper">
            <div className="c-f-input">
                <div>
-               <input type="number" value={input} onChange={handleChange} name ="input" />
+               <input type="number" value={input} onChange={handleChange} placeholder="0.00" name ="input" />
                </div>
-              
+               <h6>Select Your Input</h6>
+              <div>
+                 
                <input type="radio" name="unit-i" value={meterIradio} onClick={handleInputUnit}    id="m" />
                Meter
                <input type="radio" name="unit-i" value={centiIradio} onClick={handleInputUnit}   id="cm" />
@@ -345,9 +348,13 @@ const Unit = () => {
                Foot
                <input type="radio" name="unit-i"  value={inchIradio} onClick={handleInputUnit}   id="ic" />
                Inch
+               </div>
            </div>
-                <p>To</p>
-           <div className="c-f-output">               
+           
+                <p>=</p>
+           <div className="c-f-output">   
+           <h6>Select Your output</h6> 
+           <div>   
                <input type="radio" name="unit-o" value={meter} onClick={handleOutputUnit}    id="mo"  />
                Meter
                <input type="radio" name="unit-o" value={centi} onClick={handleOutputUnit}  id="cmo" />
@@ -360,14 +367,22 @@ const Unit = () => {
                Foot
                <input type="radio" name="unit-o"  value={inch} onClick={handleOutputUnit}  id="ico" />
                Inch
-
+            </div>
                <div>
-               <input type="text" value={output} name ="output" />
+               <input type="text" value={output} name ="output" autoComplete="off" placeholder="0.00" />
                </div>
+        </div>
+            <div className="button-holder">
+               <button onClick={handleOutput} 
+                   className={input  !== "" ? "enabledButton button" : "disabledButton button"} >Convert
+                </button>   
+            </div>  
            </div>
-           <button onClick={handleOutput}>Convert</button>                               
+                                    
     </div>
+    </>
     )
 }
 
 export default Unit;
+

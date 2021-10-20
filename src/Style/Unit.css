@@ -1,0 +1,123 @@
+/* wrapper and allignment */
+
+.component-wrapper{
+    max-width: 100%;
+    height: 100vh;
+
+}
+.c-header{
+    margin: 2rem 2rem;
+    color: rgb(2, 66, 138);
+    display: flex;
+    font-size: 1.5rem;
+}
+.math-wrapper{
+    border: .009rem solid rgb(248, 248, 248) ;
+    width:50%;
+    margin-left: 5%;
+    box-shadow: .04rem .04rem .8rem rgb(241, 241, 241) ;
+    background-color: #fff;   
+}
+
+.c-f-input div:first-of-type,.c-f-output div:last-of-type{
+    display: flex;
+}
+/* radio buttons */
+.c-f-input div:last-of-type,.c-f-output div:first-of-type{
+    display: flex;
+    justify-content: flex-start;
+    font-size: .9rem;
+    padding: 0rem 2rem;
+    color: rgb(48, 47, 48);
+} 
+.disabledRadioButton{
+
+   
+}
+/* radio buttons */
+.c-f-input h6 , .c-f-output h6{
+    display:flex;
+    padding-left: 1rem;
+    
+} 
+
+/* wrapper and allignment */
+
+/* Input and Output fields */
+
+.c-f-input div:first-of-type input ,.c-f-output div:last-of-type input {
+    width:60%;
+    font-size: 1.1rem;
+    padding: .5rem;
+    border: .2rem solid rgb(233, 230, 230);
+    border-radius: .5rem;
+    color:rgb(47, 47, 48);
+    margin:1rem;
+    margin-bottom: .1rem;
+}
+.c-f-input div:first-of-type input:focus,.c-f-output div:last-of-type input:focus{
+    border-color: #d7c9ec;
+    outline: none;
+
+}
+.input_smalltext,.output_smalltext{
+    font-size: .7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left:-6.3rem;
+    color: gray;
+}
+/* Input and Output fields */
+
+/* disabled and enabled Conversion button */
+.button-holder{
+    display: flex;
+    justify-content: flex-end;
+}
+button{
+    font-size: .8rem;
+    width:15%;
+    padding: .5rem;
+    margin: .5rem;
+    cursor: pointer;
+    border: none;
+    box-shadow: .03rem .09rem .2rem rgb(177, 177, 177);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    border-radius: .3rem;
+
+}
+
+.disabledButton{
+    color:white;
+    background-color: rgb(145, 144, 144);
+}
+.disabledButton:hover{
+    background-color:rgb(102, 102, 102) ;
+}
+
+/* Unit convertor */
+.enabledButton{
+    color:white;
+    background-color: rgb(85, 147, 219);
+}
+.enabledButton:hover{
+    background-color: rgb(52, 127, 214);
+}
+/* Unit convertor */
+
+/* Temperature convertor */
+.enabledButtonTemp{
+    background-color: violet;
+    color: white;
+}
+.enabledButtonTemp:hover{
+    background-color: rgb(219, 97, 219);
+}
+/* Temperature convertor */
+
+/* disabled and enabled Conversion button */
+
+
+

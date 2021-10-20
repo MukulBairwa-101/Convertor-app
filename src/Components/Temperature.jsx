@@ -1,8 +1,9 @@
 import React,{useState} from 'react'
+import "../Style/Unit.css";
 import GotoHome from "../Common/GotoHome";
 const Temperature = () => {
-    const[input,setInput] = useState(0.0);
-    const[output,setOutput] = useState(0.0);
+    const[input,setInput] = useState("");
+    const[output,setOutput] = useState("");
 
     const[celciusradioI,setCelciusradioI]=useState(false);
     const[farenheitradioI,setFarenheitradioI]=useState(false);
@@ -16,6 +17,12 @@ const Temperature = () => {
 
     const handleChange=(e)=>{
        setInput(parseFloat(e.target.value));
+       handleOutput();
+    //    let getInput = parseFloat(e.target.value) ;
+    //    if(celciusradioI) setInput(getInput + "deg celcius");
+    //    else if(farenheitradioI) setInput(getInput + "Farenheit");
+    //    else  setInput(getInput + "Kelvin" );
+    //    celciusradioI ? input + "deg celcius": farenheitradioI ? input + "Farenheit" : kelvinradioI ? input + "Kelvin" : "" 
     }
 
     const handleOutput =()=>{
@@ -130,28 +137,82 @@ const Temperature = () => {
     return (
         <div>
             <GotoHome />
+            <div className="component-wrapper">
             <div className="c-header"><h4>Temperature convertor</h4></div>
-           
+            <div className="math-wrapper">
                     <div className="c-f-input">
-                        <input type="number" value={input} onChange={handleChange} name ="input" />
+                        <div>
+                        <input type="number" 
+                        value={ input} 
+                        onChange={handleChange} 
+                        placeholder={celciusradioI ? "degree celcius": farenheitradioI ? "Farenheit" : kelvinradioI ? "Kelvin" : ""} name ="input" />
+                            <p className="input_smalltext">
+                                {
+                                    celciusradioI ? "deg celcius": farenheitradioI ? "Farenheit" : kelvinradioI ? "Kelvin" : "" 
+                                }
+                            </p>
+                        </div>
+                        <h6>Select Your Input</h6>
+                        <div>
                         <input type="radio" name="temp-i" value={celciusradioI} onClick={handleUnit}    id="cel" />
                         Celcius
                         <input type="radio" name="temp-i" value={farenheitradioI}  onClick={handleUnit}   id="faren" />
                         Farenheit
                         <input type="radio" name="temp-i"value={kelvinradioI} onClick={handleUnit}   id="kel" />
                         Kelvin
+                        </div>
+                       
                     </div>
-
+                    <p>=</p>
                     <div className="c-f-output">
-                        <input type="text" value={output} name ="output" />
-                        <input type="radio" name="temp-o" onClick={handleUnit}  value ={celciusradio}  id="celcius"  />
-                        Celcius
-                        <input type="radio" name="temp-o" onClick={handleUnit} value ={farenheitradio}  id="farenheit" />
-                        Farenheit
-                        <input type="radio" name="temp-o" onClick={handleUnit} value ={kelvinradio} id="kelvin" />
-                        Kelvin
-                    </div>
-                    <button onClick={handleOutput}>Convert</button>                               
+                    <h6>Select Your output</h6>
+                    <div>
+                        {celciusradioI ? 
+                            <>
+                             <input type="radio" name="temp-o" onClick={handleUnit} className="disabledRadioButton" value ={celciusradio}  disabled id="celcius"  /> Celcius
+                            </>
+                             : 
+                             <>
+                             <input type="radio" name="temp-o" onClick={handleUnit}  value ={celciusradio}  id="celcius"  /> Celcius
+                             </>
+                         }
+                        {farenheitradioI ? 
+                            <>
+                             <input type="radio" name="temp-o" onClick={handleUnit} value ={farenheitradio} className="disabledRadioButton"  disabled id="farenheit" /> Farenheit
+                            </>
+                             : 
+                             <>
+                             <input type="radio" name="temp-o" onClick={handleUnit} value ={farenheitradio}   id="farenheit" /> Farenheit
+                             </>
+                         }
+                        {kelvinradioI ?
+                               <>
+                                <input type="radio" name="temp-o" onClick={handleUnit} className="disabledRadioButton"  disabled value ={kelvinradio} id="kelvin" />Kelvin
+                               </>
+                               : 
+                               <>
+                               <input type="radio" name="temp-o" onClick={handleUnit}  value ={kelvinradio} id="kelvin" />Kelvin
+                               </>
+                        }
+                       
+                         </div>
+                    <div>
+                        <input type="text" value={output} placeholder ="Result" name ="output" />
+                        <p className="output_smalltext">
+                                {
+                                    output ?
+                                    celciusradio ? "deg celcius": farenheitradio? "Farenheit" : kelvinradio ? "Kelvin" : "" :""
+                                }
+                        </p>
+                    </div>          
+                </div>
+                    <div className="button-holder">
+                        <button onClick={handleOutput}
+                            className={input  !== "" ? "enabledButtonTemp button" : "disabledButton button"}
+                         >Convert</button>    
+                    </div>    
+                </div>                       
+        </div>
         </div>
     )
 }
